@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShauliBlog.Models {
     public class Comment {
@@ -6,13 +7,14 @@ namespace ShauliBlog.Models {
         public Comment() {
         }
 
-        public Comment(int iD, string title, string author, string authorSiteUrl, string content, int postID) {
-            ID = iD;
-            Title = title;
-            Author = author;
-            AuthorSiteUrl = authorSiteUrl;
-            Content = content;
-            PostID = postID;
+        public Comment(int iD, string title, string author, string authorSiteUrl, DateTime PublishedDate, string content, int postID) {
+            this.ID = iD;
+            this.Title = title;
+            this.Author = author;
+            this.PublishedDate = PublishedDate;
+            this.AuthorSiteUrl = authorSiteUrl;
+            this.Content = content;
+            this.PostID = postID;
         }
 
         public int ID { get;  set; }
@@ -22,6 +24,8 @@ namespace ShauliBlog.Models {
         public string Author { get; set; }
 
         public string AuthorSiteUrl { get; set; }
+
+        public DateTime PublishedDate { get; set; }
 
         public string Content { get; set; }
 

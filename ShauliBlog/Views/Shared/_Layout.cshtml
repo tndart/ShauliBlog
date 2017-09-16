@@ -16,7 +16,7 @@
         <ul>
             @foreach (var itemMenu in new[] { "Blog", "FansClub", "About", "Contact" }) {
                 <li class="@(ViewBag.Selected == @itemMenu ? "selected": String.Empty)">    
-                    <a href="@itemMenu">@itemMenu</a>   
+                    <a href="/@itemMenu">@itemMenu</a>   
                 </li>
             }
             <li class="subscribe">

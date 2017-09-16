@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ShauliBlog.DAL;
+using ShauliBlog.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,21 @@ namespace ShauliBlog.Controllers
 {
     public class BlogController : Controller
     {
-        public ActionResult Index()
+        private BlogContext db = new BlogContext();
+
+        public ActionResult Index(int? id)
         {
             ViewBag.Selected = "Blog";
-            return View();
+
+            if (id == null)
+                id = 1;
+
+            Post post = db.Posts.Find(id);
+            if (post == null) {
+                return HttpNotFound();
+            }
+
+            return View(post);
         }
     }
 }

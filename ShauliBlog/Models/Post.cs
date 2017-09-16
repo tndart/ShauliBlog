@@ -19,7 +19,7 @@ namespace ShauliBlog.Models {
             this.Content = content;
             this.ImageUrl = imageUrl;
             this.VideoUrl = videoUrl;
-           // this.Comments = comments;
+            this.Comments = comments;
         }
 
         #region Props
@@ -38,7 +38,7 @@ namespace ShauliBlog.Models {
 
         public string ImageUrl { get; set; }
 
-        /*[NotMapped]
+        [NotMapped]
         public Image Image {
             get {
                 if (ImageUrl.ToString().ToLower().Contains("http")) {
@@ -47,10 +47,10 @@ namespace ShauliBlog.Models {
                 return Image.FromFile(ImageUrl);
             }
         }
-        */
+        
         public string VideoUrl { get; set; }
 
-       // public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
 
         #endregion

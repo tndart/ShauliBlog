@@ -27,9 +27,8 @@ namespace ShauliBlog.DAL {
             
             fans.ForEach(f => context.Fans.Add(f));
             context.SaveChanges();
-            comments.ForEach(c => context.Comments.Add(c));
-            context.SaveChanges();
             posts.ForEach(p => context.Posts.Add(p));
+            comments.ForEach(c => context.Comments.Add(c));
             context.SaveChanges();
         }
     }

@@ -5,6 +5,10 @@ using System.Collections.Generic;
 
 namespace ShauliBlog.Models {
     public class Post {
+
+        public Post() {
+        }
+
         public Post(int ID, string title, string author, string authorSiteUrl, DateTime publishedDate, 
                     string content, string imageUrl, string videoUrl, ICollection<Comment> comments) {
             this.ID = ID;
@@ -15,26 +19,26 @@ namespace ShauliBlog.Models {
             this.Content = content;
             this.ImageUrl = imageUrl;
             this.VideoUrl = videoUrl;
-            this.Comments = comments;
+           // this.Comments = comments;
         }
 
         #region Props
 
-        public int ID { get; private set; }
+        public int ID { get; set; }
 
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
-        public string Author { get; private set; }
+        public string Author { get; set; }
 
-        public string AuthorSiteUrl { get; private set; }
+        public string AuthorSiteUrl { get; set; }
 
-        public DateTime PublishedDate { get; private set; }
+        public DateTime PublishedDate { get; set; }
 
-        public string Content { get; private set; }
+        public string Content { get; set; }
 
-        public string ImageUrl { get; private set; }
+        public string ImageUrl { get; set; }
 
-        [NotMapped]
+        /*[NotMapped]
         public Image Image {
             get {
                 if (ImageUrl.ToString().ToLower().Contains("http")) {
@@ -43,10 +47,10 @@ namespace ShauliBlog.Models {
                 return Image.FromFile(ImageUrl);
             }
         }
+        */
+        public string VideoUrl { get; set; }
 
-        public string VideoUrl { get; private set; }
-
-        public virtual ICollection<Comment> Comments { get; private set; }
+       // public virtual ICollection<Comment> Comments { get; set; }
 
 
         #endregion

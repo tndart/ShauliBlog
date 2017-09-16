@@ -162,7 +162,6 @@
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="DAL\BlogInitializer.cs" />
     <Compile Include="DAL\BlogContext.cs" />
-    <Compile Include="DAL\PostContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

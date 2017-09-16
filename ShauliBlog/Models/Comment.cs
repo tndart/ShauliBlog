@@ -2,16 +2,20 @@
 
 namespace ShauliBlog.Models {
     public class Comment {
+
+        public Comment() {
+        }
+
         public Comment(int iD, string title, string author, string authorSiteUrl, string content, int postRefID) {
             ID = iD;
             Title = title;
             Author = author;
             AuthorSiteUrl = authorSiteUrl;
             Content = content;
-            PostRefID = postRefID;
+            //PostRefID = postRefID;
         }
 
-        public int ID { get; private set; }
+        public int ID { get;  set; }
 
         public string Title { get; set; }
 
@@ -21,9 +25,9 @@ namespace ShauliBlog.Models {
 
         public string Content { get; set; }
 
-        [ForeignKey("Post")]
+     /*   [ForeignKey("Post")]
         public int PostRefID { get; set; }
 
-        public Post Post { get; set; }
+        public Post Post { get; set; }*/
     }
 }

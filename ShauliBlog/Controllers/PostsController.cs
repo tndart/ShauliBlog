@@ -13,7 +13,7 @@ namespace ShauliBlog.Controllers
 {
     public class PostsController : Controller
     {
-        private PostContext db = new PostContext();
+        private BlogContext db = new BlogContext();
 
         // GET: Posts
         public ActionResult Index()

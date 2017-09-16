@@ -30,17 +30,17 @@ namespace ShauliBlog.Models {
             this.Pazam = Pazam;
         }
 
-        public int ID { get; private set; }
+        public int ID { get; set; }
 
-        public string FirstName { get; private set; }
+        public string FirstName { get; set; }
 
-        public string LastName { get; private set; }
+        public string LastName { get; set; }
 
-        public Gender Gender { get; private set; }
+        public Gender Gender { get; set; }
 
-        public DateTime Birthday { get; private set; }
+        public DateTime Birthday { get; set; }
 
-        public short Pazam { get; private set; }
+        public short Pazam { get; set; }
 
 
     }

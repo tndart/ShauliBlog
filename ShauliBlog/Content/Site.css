@@ -11,6 +11,7 @@
 #transDemo2 div {
   height:30px;
   width:30px;
+  margin: 7px;
   text-align:center;
   -webkit-transition: all 2s ease-in-out;
   -moz-transition: all 2s ease-in-out;
@@ -40,7 +41,7 @@ p{
 
 body {
 	margin: 0 auto;
-	padding: 22px 0;
+	padding: 0 0;
 	width: 940px;
 	font: 13px/22px Helvetica, Arial, sans-serif;
 	background: #F0F0F0;
@@ -185,17 +186,17 @@ nav {
 	display: inline-block;
 	width: 100%;
 	margin: 15px 0 0 0;
+    padding: 5px 5px 15px 15px;
 	border: 1px solid rgba(0,0,0, 0.2);
 	/* Border-radius not implemented yet */
 	-moz-border-radius: 22px;
 	-webkit-border-radius: 22px;
-
-	
+    
 }
 
 .searchField {
 	float: left;
-	margin: 7px 15px ;
+	margin: 0px 25px ;
 }
 
 /*------------------------------
@@ -203,11 +204,11 @@ nav {
 ------------------------------*/
 
 #content {
-	display: table;
+    display:table;
 }
 
 	#mainContent {
-		display: table-cell;
+		/*display: table-cell;*/
 		width: 620px;
 		padding-right: 22px;
 	}
@@ -232,7 +233,7 @@ aside section {
 	margin: 22px 0 0 22px;
 	padding: 11px 22px;
 
-	background: grey; /* For browsers that do not support gradients */
+    background: grey; /* For browsers that do not support gradients */
 	background: -webkit-linear-gradient(#e3e3e3, #ededed);
 	background: -moz-linear-gradient(#e3e3e3, #ededed);
 	background: -o-linear-gradient(#e3e3e3, #ededed);

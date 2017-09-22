@@ -2,11 +2,15 @@
 using System.Drawing;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShauliBlog.Models {
     public class Post {
 
+        private DateTime publishedDate;
+
         public Post() {
+            //this.PublishedDate = DateTime.Now;
         }
 
         public Post(int ID, string title, string author, string authorSiteUrl, DateTime publishedDate, 
@@ -32,7 +36,16 @@ namespace ShauliBlog.Models {
 
         public string AuthorSiteUrl { get; set; }
 
-        public DateTime PublishedDate { get; set; }
+        public DateTime PublishedDate {
+            get {
+                if (publishedDate != null)
+                    return this.publishedDate;
+                return DateTime.Now;
+            }
+            set {
+                this.publishedDate = value;
+            }
+        }
 
         public string Content { get; set; }
 

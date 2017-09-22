@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - Ha-Blog Shel Shauli</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
     <header>
@@ -14,7 +15,7 @@
     <nav>
         <!-- Navigation -->
         <ul>
-            @foreach (var itemMenu in new[] { "Blog", "FansClub", "About", "Contact" }) {
+            @foreach (var itemMenu in new[] { "Blog", "FansClub", "Posts", "Contact" }) {
                 <li class="@(ViewBag.Selected == @itemMenu ? "selected": String.Empty)">    
                     <a href="/@itemMenu">@itemMenu</a>   
                 </li>
@@ -38,8 +39,8 @@
         <header>
             <h2>Do you have questions for me?</h2>
         </header>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-        <img src="images/intro_shauli.png" alt="Shauli" />
+        <p>bla bla bla bla</p>
+        <img src="~/images/intro_shauli.png" alt="Shauli" />
     </section>
 
     <div id="content">
@@ -109,5 +110,11 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    
+    <script src="~/scripts/jquery.validate.date.js"></script>
+    <!--link href="~/scripts/jquery.datetimepicker.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-1.10.2.js"></script>
+    <script src="~/scripts/jquery.datetimepicker.min.js"></script-->
+
 </body>
 </html>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -28,12 +27,18 @@ namespace ShauliBlog.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
+
+            return Redirect("/Blog/Index/" + id);
+
+        }
+
+        // GET: Posts/ManageComments
+        public ActionResult ManageComments(int? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View(post);
+
+            return Redirect("/Comments/Manage/" + id);
         }
 
         // GET: Posts/Create

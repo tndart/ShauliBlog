@@ -91,6 +91,17 @@ namespace ShauliBlog.Controllers
             return View(comment);
         }
 
+        // GET: Posts/ManageComments
+        public ActionResult Manage(int? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var comments = db.Comments.Include(c => c.Post);
+            comments = comments.Where(c => c.PostID == id);
+            return View(comments.ToList());
+        }
+
         // GET: Comments/Delete/5
         public ActionResult Delete(int? id)
         {

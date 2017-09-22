@@ -1,11 +1,10 @@
-﻿@model IEnumerable<ShauliBlog.Models.Post>
+﻿@model IEnumerable<ShauliBlog.Models.Comment>
 
 @{
     ViewBag.Title = "Index";
 }
 
 @section ContentSection {
-
 <h2>Index</h2>
 
 <p>
@@ -14,52 +13,46 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Post.Title)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Author)
         </th>
-        <!--th>
+        <th>
             @Html.DisplayNameFor(model => model.AuthorSiteUrl)
-        </!--th>
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.PublishedDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Content)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VideoUrl)
-        </th-->
-        <th>Actions</th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Post.Title)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Author)
         </td>
-        <!--td>
+        <td>
             @Html.DisplayFor(modelItem => item.AuthorSiteUrl)
-        </!--td>
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.PublishedDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Content)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VideoUrl)
-        </td-->
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |

@@ -42,7 +42,7 @@ p{
 body {
 	margin: 0 auto;
 	padding: 0 0;
-	width: 940px;
+	width: 1000px;
 	font: 13px/22px Helvetica, Arial, sans-serif;
 	background: #F0F0F0;
 }
@@ -204,18 +204,20 @@ nav {
 ------------------------------*/
 
 #content {
-    display:table;
+    display: block;
 }
 
 	#mainContent {
-		/*display: table-cell;*/
-		width: 620px;
+		display: inline-block;
+		width: 70%;
 		padding-right: 22px;
 	}
 	
 	aside {
-		display: table-cell;
-		width: 300px;
+		display: inline-block;
+		width: 30%;
+        overflow: hidden;
+        float:right;
 		/*background: url("images/sidebar_background.png") top left;*/
 	}
 

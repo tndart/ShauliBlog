@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using ShauliBlog.DAL;
 using ShauliBlog.Models;
+using ShauliBlog.Code;
 
 namespace ShauliBlog.Controllers
 {
@@ -47,7 +48,7 @@ namespace ShauliBlog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,Birthday,Pazam")] Fan fan)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,Birthday,Pazam,Username,Password")] Fan fan)
         {
             if (ModelState.IsValid)
             {
@@ -60,6 +61,7 @@ namespace ShauliBlog.Controllers
         }
 
         // GET: FansClub/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +81,7 @@ namespace ShauliBlog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Gender,Birthday,Pazam")] Fan fan)
         {
             if (ModelState.IsValid)
@@ -91,6 +94,7 @@ namespace ShauliBlog.Controllers
         }
 
         // GET: FansClub/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,6 +110,7 @@ namespace ShauliBlog.Controllers
         }
 
         // POST: FansClub/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

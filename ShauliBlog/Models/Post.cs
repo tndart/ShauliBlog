@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
@@ -69,4 +69,11 @@ namespace ShauliBlog.Models {
         #endregion
 
     }
+
+    public class PostObject
+    {
+        public string Date { get; set; }
+    }
+
+
 }

@@ -15,11 +15,27 @@
     <nav>
         <!-- Navigation -->
         <ul>
+            @if (User != null && User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                <li>
+                    <a href="~/Login/LogOff">Hello @ShauliBlog.Code.AccountHelper.Username(), Logout</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="~/Login/Login">Login</a>
+                </li>
+            }
+
             @foreach (var itemMenu in new[] { "Blog", "FansClub", "Posts", "Contact" }) {
                 <li class="@(ViewBag.Selected == @itemMenu ? "selected": String.Empty)">    
                     <a href="/@itemMenu">@itemMenu</a>   
                 </li>
             }
+
+
+
             <li class="subscribe">
                 <div id="transDemo2">
                     <div class="hover">
@@ -110,8 +126,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    
-    <script src="~/scripts/jquery.validate.date.js"></script>
     <!--link href="~/scripts/jquery.datetimepicker.css" rel="stylesheet" />
     <script src="~/scripts/jquery-1.10.2.js"></script>
     <script src="~/scripts/jquery.datetimepicker.min.js"></script-->

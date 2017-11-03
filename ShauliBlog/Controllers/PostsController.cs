@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -32,7 +32,47 @@ namespace ShauliBlog.Controllers
 
         }
 
+        // GET: Posts/StatsByDate/
+        public ActionResult Stats(int type)
+        {
+            var results = db.Posts.ToList().OrderBy(post => post.PublishedDate);
+            
+            if (type == 1)
+            {
+                var res = results.GroupBy(post2 => post2.PublishedDate.ToShortDateString(), (key, g) =>
+                     {
+                         var arr = new String[2];
+                         arr[0] = g.Count().ToString();
+                         arr[1] = key;
+
+                         return arr;
+                     }).ToArray();
+
+                ViewBag.Title = "Posts per date";
+
+                return View("Stats", res);
+
+            }
+            else
+            {
+                var res = results.GroupBy(post2 => post2.Author, (key, g) =>
+                {
+                    var arr = new String[2];
+                    arr[0] = g.Count().ToString();
+                    arr[1] = key;
+
+                    return arr;
+                }).ToArray();
+
+                ViewBag.Title = "Posts per User";
+
+                return View("Stats", res);
+
+            }
+        }
+
         // GET: Posts/ManageComments
+        [Authorize]
         public ActionResult ManageComments(int? id) {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -42,6 +82,7 @@ namespace ShauliBlog.Controllers
         }
 
         // GET: Posts/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -52,6 +93,7 @@ namespace ShauliBlog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "ID,Title,Author,AuthorSiteUrl,PublishedDate,Content,ImageUrl,VideoUrl")] Post post)
         {
             if (ModelState.IsValid)
@@ -65,6 +107,7 @@ namespace ShauliBlog.Controllers
         }
 
         // GET: Posts/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +127,7 @@ namespace ShauliBlog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "ID,Title,Author,AuthorSiteUrl,PublishedDate,Content,ImageUrl,VideoUrl")] Post post)
         {
             if (ModelState.IsValid)
@@ -96,6 +140,7 @@ namespace ShauliBlog.Controllers
         }
 
         // GET: Posts/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,6 +156,7 @@ namespace ShauliBlog.Controllers
         }
 
         // POST: Posts/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

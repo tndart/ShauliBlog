@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -34,6 +34,7 @@ namespace ShauliBlog.Controllers
         }
 
         // GET: Comments/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.PostID = new SelectList(db.Posts, "ID", "Title");
@@ -45,6 +46,7 @@ namespace ShauliBlog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "ID,Title,Author,AuthorSiteUrl,PublishedDate,Content,PostID")] Comment comment)
         {
             if (ModelState.IsValid)
@@ -59,6 +61,7 @@ namespace ShauliBlog.Controllers
         }
 
         // GET: Comments/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +82,7 @@ namespace ShauliBlog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "ID,Title,Author,AuthorSiteUrl,PublishedDate,Content,PostID")] Comment comment)
         {
             if (ModelState.IsValid)
@@ -92,6 +96,7 @@ namespace ShauliBlog.Controllers
         }
 
         // GET: Posts/ManageComments
+        [Authorize]
         public ActionResult Manage(int? id) {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -103,6 +108,7 @@ namespace ShauliBlog.Controllers
         }
 
         // GET: Comments/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -118,6 +124,7 @@ namespace ShauliBlog.Controllers
         }
 
         // POST: Comments/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

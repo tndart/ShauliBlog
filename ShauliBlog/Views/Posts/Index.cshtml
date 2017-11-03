@@ -8,6 +8,13 @@
 
 <h2>Index</h2>
 
+    @Html.ActionLink("Posts by date", "Stats", new { type = 1 }) &nbsp&nbsp&nbsp
+    @Html.ActionLink("Posts by user", "Stats", new { type = 2})
+<br/>
+
+
+
+
 <table class="table">
     <tr>
         <th>
@@ -58,10 +65,14 @@
             @Html.DisplayFor(modelItem => item.VideoUrl)
         </td-->
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
-            @Html.ActionLink("Manage Comments", "ManageComments", new { id = item.ID }) 
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) 
+
+@if (ShauliBlog.Code.AccountHelper.IsAuthorized(item.Author))
+{
+            @Html.ActionLink("| Edit ", "Edit", new { id = item.ID }); 
+            @Html.ActionLink("| Delete ", "Delete", new { id = item.ID }); 
+            @Html.ActionLink("| Manage Comments", "ManageComments", new { id = item.ID });
+    }
         </td>
     </tr>
 }

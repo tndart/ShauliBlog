@@ -1,0 +1,17 @@
+﻿@model Object[]
+
+}
+
+@section ContentSection {
+   
+<h2>@ViewBag.Title</h2>
+
+<script>
+    var data = @Html.Raw(Json.Encode(Model));
+    localStorage['data'] = JSON.stringify(data);
+
+</script>
+    <iframe src="~/Stats.html" style="width: 100%;" height="500" frameborder="0" />
+}
+
+

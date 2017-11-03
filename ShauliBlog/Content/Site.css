@@ -1,4 +1,4 @@
-﻿/*------------------------------
+/*------------------------------
 =BASIC SETUP
 ------------------------------*/
 
@@ -85,8 +85,9 @@ nav {
 
 	nav ul {
 		margin: 0 auto;
-		width: 940px;
+        margin-left: 100px;
 		list-style: none;
+        width: 100%;
 	}
 
 		nav ul li {
@@ -95,8 +96,7 @@ nav {
 		
 			nav ul li a {
 				display: block;
-				margin-right: 20px;
-				width: 140px;
+				margin-right: 80px;
 				font-size: 14px;
 				line-height: 44px;
 				text-align: center;
@@ -402,7 +402,7 @@ footer {
 		display: table;
 		margin: 0 auto;
 		padding: 44px 0;
-		width: 940px;
+		width: 100%;
 		color: #777;
 	}
 	

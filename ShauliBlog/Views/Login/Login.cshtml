@@ -1,0 +1,29 @@
+﻿@model ShauliBlog.Models.LoginModel
+
+@section ContentSection {
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+<section id="loginForm">
+    @using (Html.BeginForm())
+    {
+        <div style="color:red;">@Html.ValidationSummary(true)</div>
+        <fieldset>
+            <legend>Log in Form</legend>
+                    Username
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)
+                    &nbsp&nbsp&nbsp Password
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+            <br/>
+            <input type="submit" value="Log in" style="margin: 10px 0 20px 0; width:100px;" />
+        </fieldset>
+        <br/>
+        <p>
+            @Html.ActionLink("Register","Create", "FansClub") if you don't have an account.
+        </p>
+    }
+</section>
+    }

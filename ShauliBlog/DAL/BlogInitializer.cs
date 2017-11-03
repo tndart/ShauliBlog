@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,8 +10,9 @@ namespace ShauliBlog.DAL {
 
         protected override void Seed(BlogContext context) {
             var fans = new List<Fan> {
-                new Fan(1, "Liron", "Elbaz", new DateTime(1992,5,9), Gender.Male, 9),
-                new Fan(2, "Yakir", "Nadav", new DateTime(1992,8,23), Gender.Male, 5)
+                new Fan(1, "Liron", "Elbaz", new DateTime(1992,5,9), Gender.Male, 9, "liron", "123456", false),
+                new Fan(2, "Yakir", "Nadav", new DateTime(1992,8,23), Gender.Male, 5, "yakir", "123456", false),
+                new Fan(2, "Mike", "Laury", new DateTime(1980,8,2), Gender.Male, 7, "admin", "admin", true),
             };
             
             var comments = new List<Comment> {
@@ -22,7 +23,10 @@ namespace ShauliBlog.DAL {
 
             var posts = new List<Post> {
                 new Post(1, "Post 1", "Liron", "https://Liron.com", DateTime.Today, "First post ever", "images/flower.png", "", comments.FindAll(x => x.ID < 3)),
-                new Post(2, "Post 2", "Yakir", "https://Yakir.com", DateTime.Today.AddDays(-2), "Second post ever", "", "", comments.FindAll(x => x.ID == 3))
+                new Post(2, "Post 2", "Yakir", "https://Yakir.com", DateTime.Today.AddDays(-2), "Second post ever", "", "", comments.FindAll(x => x.ID == 3)),
+                new Post(2, "Post 3", "Yakir", "https://Yakir.com", DateTime.Today.AddDays(-3), "third post ever", "", "", comments.FindAll(x => x.ID == 3)),
+                new Post(2, "Post 4", "Yakir", "https://Yakir.com", DateTime.Today.AddDays(-3), "forth post ever", "", "", comments.FindAll(x => x.ID == 3)),
+                new Post(2, "Post 5", "Yakir", "https://Yakir.com", DateTime.Today.AddDays(-3), "fifth post ever", "", "", comments.FindAll(x => x.ID == 3))
             };
             
             fans.ForEach(f => context.Fans.Add(f));

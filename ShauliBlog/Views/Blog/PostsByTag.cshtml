@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ShauliBlog.Models.Post>
+
+@{
+    ViewBag.Title = "PostsByTag";
+}
+
+@section ContentSection
+{
+    <h2>Posts By Tags</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorSiteUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VideoUrl)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorSiteUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublishedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VideoUrl)
+                </td>
+                <td>
+                    @Html.ActionLink("Read", "Index", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}

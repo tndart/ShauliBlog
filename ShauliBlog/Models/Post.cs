@@ -3,6 +3,7 @@ using System.Drawing;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace ShauliBlog.Models {
     public class Post {
@@ -13,8 +14,8 @@ namespace ShauliBlog.Models {
             //this.PublishedDate = DateTime.Now;
         }
 
-        public Post(int ID, string title, string author, string authorSiteUrl, DateTime publishedDate, 
-                    string content, string imageUrl, string videoUrl, ICollection<Comment> comments) {
+        public Post(int ID, string title, string author, string authorSiteUrl, DateTime publishedDate,
+                    string content, string imageUrl, string videoUrl, ICollection<Comment> comments, ICollection<Tag> tags) {
             this.ID = ID;
             this.Title = title;
             this.Author = author;
@@ -24,6 +25,7 @@ namespace ShauliBlog.Models {
             this.ImageUrl = imageUrl;
             this.VideoUrl = videoUrl;
             this.Comments = comments;
+            this.Tags = tags;
         }
 
         #region Props
@@ -60,18 +62,29 @@ namespace ShauliBlog.Models {
                 return Image.FromFile(ImageUrl);
             }
         }
-        
+
         public string VideoUrl { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
 
+        public virtual ICollection<Tag> Tags { get; set; }
+
+        [NotMapped]
+        public string tagsToString {
+            get {
+                StringBuilder all = new StringBuilder();
+                foreach (var tag in Tags) {
+                    all.Append(tag.ID + "-");
+                }
+                return all.ToString();
+            }
+        }
 
         #endregion
 
     }
 
-    public class PostObject
-    {
+    public class PostObject {
         public string Date { get; set; }
     }
 

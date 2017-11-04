@@ -6,88 +6,100 @@
 
 @section ContentSection
 {
-<div>
-    <section id="searchBar">
-        <div class="searchField">
-            <h5> Search By - Author: </h5>
-            <input id="searchByAuthor" type="text" />
-        </div>
-        <div class="searchField">
-            <h5> Email: </h5>
-            <input id="searchByEmail" type="email" />
-        </div>
-        <div class="searchField">
-            <h5> Comment text: </h5>
-            <input id="searchByCommentsText" type="text" />
-        </div>
-        <div class="searchField">
-            <h5> Publish Date: </h5>
-            <input id="searchByDate" type="date" />
-        </div>
-        <div class="searchField">
-            <h5> Comments number: </h5>
-            <input id="searchByMinComments" type="range" min=1 max=10 value=1 />
-        </div>
-    </section>
-    <div id="mainContent">
-        <section>
-            <article class="blogPost">
-                <header>
-                    <h2>@Model.Title</h2>
-                    <p>Posted on <time>@Html.DisplayFor(model => model.PublishedDate)</time> by <a href="@Model.AuthorSiteUrl">@Model.Author</a> - <a href="#comments">@Model.Comments.Count comments</a></p>
-                </header>
-                <div>
-                    <p>@Model.Content</p>
-                    
-                    <img src="@Model.ImageUrl" />
-                                    
-                    @if (!string.IsNullOrEmpty(Model.VideoUrl)) {
-                        <video controls="controls">
-                            <source src="@Html.DisplayFor(model => model.VideoUrl)" type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                    }
-
-
-                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=shauliBlog.com&quote=@Model.Title-@Model.Content" style="float: right; display:block;  width: 150px; height:35px;"    >
-                        <img src="~/images/facebookshare.png" width="150" height="30" />
-                    </a>
-
-
-                </div>
-            </article>
+    <div>
+        <section id="searchBar">
+            <div class="searchField">
+                <h5> Search By - Author: </h5>
+                <input id="searchByAuthor" type="text" />
+            </div>
+            <div class="searchField">
+                <h5> Email: </h5>
+                <input id="searchByEmail" type="email" />
+            </div>
+            <div class="searchField">
+                <h5> Comment text: </h5>
+                <input id="searchByCommentsText" type="text" />
+            </div>
+            <div class="searchField">
+                <h5> Publish Date: </h5>
+                <input id="searchByDate" type="date" />
+            </div>
+            <div class="searchField">
+                <h5> Comments number: </h5>
+                <input id="searchByMinComments" type="range" min=1 max=10 value=1 />
+            </div>
         </section>
-        <section id="comments">
-            <h3>Comments</h3>
-            @foreach (var comment in Model.Comments) {
-                <article>
+        <div id="mainContent">
+            <section>
+                <article class="blogPost">
                     <header>
-                        <a href="@comment.AuthorSiteUrl">@comment.Author</a> on <time>@Html.DisplayFor(model =>comment.PublishedDate)</time>
+                        <h2>@Model.Title</h2>
+                        <p>
+                            Posted on <time>@Html.DisplayFor(model => model.PublishedDate)</time> by <a href="@Model.AuthorSiteUrl">@Model.Author</a> - <a href="#comments">@Model.Comments.Count comments</a>
+                            <br />
+                            Tags:
+                            @foreach (var tag in Model.Tags) {
+                                <a href="#"> @tag.Name </a>
+                            }
+                            <a href="/Blog/PostsByTag?tags=@Model.tagsToString">
+                                <button> Give me more like that </button>
+                            </a>
+                        </p>
+
+
                     </header>
-                    <p>@comment.Content</p>
+                    <div>
+                        <p>@Model.Content</p>
+
+                        <img src="@Model.ImageUrl" />
+
+                        @if (!string.IsNullOrEmpty(Model.VideoUrl)) {
+                            <video controls="controls">
+                                <source src="@Html.DisplayFor(model => model.VideoUrl)" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        }
+
+
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=shauliBlog.com&quote=@Model.Title-@Model.Content" style="float: right; display:block;  width: 150px; height:35px;">
+                            <img src="~/images/facebookshare.png" width="150" height="30" />
+                        </a>
+
+
+                    </div>
                 </article>
-            }
-        </section>
-        <form action="#" method="post">
-            <h3>Post a comment</h3>
-            <p>
-                <label for="name">Name</label>
-                <input name="name" id="name" type="text" required />
-            </p>
-            <p>
-                <label for="email">E-mail</label>
-                <input name="email" id="email" type="email" required />
-            </p>
-            <p>
-                <label for="website">Website</label>
-                <input name="website" id="website" type="url" />
-            </p>
-            <p>
-                <label for="comment">Comment</label>
-                <textarea name="comment" id="comment" required></textarea>
-            </p>
-            <p><input type="submit" value="Post comment" /></p>
-        </form>
+            </section>
+            <section id="comments">
+                <h3>Comments</h3>
+                @foreach (var comment in Model.Comments) {
+                    <article>
+                        <header>
+                            <a href="@comment.AuthorSiteUrl">@comment.Author</a> on <time>@Html.DisplayFor(model => comment.PublishedDate)</time>
+                        </header>
+                        <p>@comment.Content</p>
+                    </article>
+                }
+            </section>
+            <form action="#" method="post">
+                <h3>Post a comment</h3>
+                <p>
+                    <label for="name">Name</label>
+                    <input name="name" id="name" type="text" required />
+                </p>
+                <p>
+                    <label for="email">E-mail</label>
+                    <input name="email" id="email" type="email" required />
+                </p>
+                <p>
+                    <label for="website">Website</label>
+                    <input name="website" id="website" type="url" />
+                </p>
+                <p>
+                    <label for="comment">Comment</label>
+                    <textarea name="comment" id="comment" required></textarea>
+                </p>
+                <p><input type="submit" value="Post comment" /></p>
+            </form>
+        </div>
     </div>
-</div>
 }

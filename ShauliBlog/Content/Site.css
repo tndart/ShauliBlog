@@ -277,11 +277,12 @@ aside section {
 		}
 
 .blogPost div {
-	/* Column-count not implemented yet */
+    column-count:2;
 	-moz-column-count: 2;
 	-webkit-column-count: 2;
 	
 	/* Column-gap not implemented yet */
+    Column-gap: 22px;
 	-moz-column-gap: 22px;
 	-webkit-column-gap: 22px;
 }

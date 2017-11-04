@@ -15,22 +15,20 @@
     <nav>
         <!-- Navigation -->
         <ul>
-            @if (User != null && User.Identity != null && User.Identity.IsAuthenticated)
-            {
+            @if (User != null && User.Identity != null && User.Identity.IsAuthenticated) {
                 <li>
                     <a href="~/Login/LogOff">Hello @ShauliBlog.Code.AccountHelper.Username(), Logout</a>
                 </li>
             }
-            else
-            {
+            else {
                 <li>
                     <a href="~/Login/Login">Login</a>
                 </li>
             }
 
             @foreach (var itemMenu in new[] { "Blog", "FansClub", "Posts", "Contact" }) {
-                <li class="@(ViewBag.Selected == @itemMenu ? "selected": String.Empty)">    
-                    <a href="/@itemMenu">@itemMenu</a>   
+                <li class="@(ViewBag.Selected == @itemMenu ? "selected": String.Empty)">
+                    <a href="/@itemMenu">@itemMenu</a>
                 </li>
             }
 
@@ -43,12 +41,12 @@
                     </div>
                 </div>
             </li>
-            <li>        
-                <a href="#">Subscribe via. RSS</a>      
+            <li>
+                <a href="#">Subscribe via. RSS</a>
             </li>
         </ul>
     </nav>
-   
+
     <section id="intro">
         <!-- Introduction -->
 
@@ -126,9 +124,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <!--link href="~/scripts/jquery.datetimepicker.css" rel="stylesheet" />
-    <script src="~/scripts/jquery-1.10.2.js"></script>
-    <script src="~/scripts/jquery.datetimepicker.min.js"></script-->
+
+
 
 </body>
 </html>

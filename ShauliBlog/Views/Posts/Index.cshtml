@@ -13,15 +13,55 @@
 <br/>
 
 
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="/Posts/SearchPost" method="post" role="form">
+                    <div class="input-group" id="adv-search">
+                        <input name="Title" id="Title" type="text" class="form-control" placeholder="Search for post" />
+                        <div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                <div class="dropdown dropdown-lg">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-right" role="menu">
 
+                                        <div class="form-group">
+                                            <label for="contain">Date</label>
+                                            <input name="PublishDate" id="PublishDate" class="form-control" type="date" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contain">Fan Name</label>
+                                            <input value="" name="FanName" id="FanName" class="form-control" type="text" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contain">Contains the words</label>
+                                            <input type="text" value="" name="Content" id="Content" class="form-control" />
+                                        </div>
+                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
+<br />
+<br />
+
+        
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Author)
+            @Html.DisplayNameFor(model => model.Fan)
         </th>
         <!--th>
             @Html.DisplayNameFor(model => model.AuthorSiteUrl)
@@ -47,7 +87,7 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Author)
+            @Html.DisplayFor(modelItem => item.Fan.FirstName)  @Html.DisplayFor(modelItem => item.Fan.LastName)
         </td>
         <!--td>
             @Html.DisplayFor(modelItem => item.AuthorSiteUrl)
@@ -67,7 +107,7 @@
         <td>
             @Html.ActionLink("Details", "Details", new { id=item.ID }) 
 
-@if (ShauliBlog.Code.AccountHelper.IsAuthorized(item.Author))
+@if (ShauliBlog.Code.AccountHelper.IsAuthorized(item.Fan.FirstName + " " + item.Fan.LastName))
 {
             @Html.ActionLink("| Edit ", "Edit", new { id = item.ID }); 
             @Html.ActionLink("| Delete ", "Delete", new { id = item.ID }); 

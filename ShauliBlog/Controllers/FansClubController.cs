@@ -22,6 +22,54 @@ namespace ShauliBlog.Controllers
             return View(db.Fans.ToList());
         }
 
+        // Post: Search Fan
+        public ActionResult FansByCountry()
+        {
+            var fansByCountry = db.Fans
+                   .GroupBy(f => f.Country)
+                   .Select(g => new { name = g.Key, count = g.Count() });
+
+            List<FansByCountry> fanbcountry = new List<FansByCountry>();
+
+            foreach (var item in fansByCountry)
+            {
+                fanbcountry.Add(new FansByCountry(item.name,item.count));
+            }
+
+            ViewBag.MyList = fanbcountry;
+            return View("FansByCountry",fanbcountry);
+        }
+
+        // Post: Search Fan
+        public ActionResult SearchFanByCountry(string Country)
+        {
+            // Query the all Fans
+            IQueryable<Fan> filteredFans = db.Fans.AsQueryable();
+
+            // Query by parameters
+            if (Country != "")
+                filteredFans = filteredFans.Where(m => m.Country.Contains(Country));
+
+            return View("Index", filteredFans);
+        }
+
+        // Post: Search Fan
+        public ActionResult SearchFan(string Name, string Country, DateTime? Birthday)
+        {
+            // Query the all Fans
+            IQueryable<Fan> filteredFans = db.Fans.AsQueryable();
+
+            // Query by parameters
+            if (Name != "")
+                filteredFans = filteredFans.Where(m => m.FirstName.Contains(Name) || (m.LastName.Contains(Name)));
+            if (Country != "")
+                filteredFans = filteredFans.Where(m => m.Country.Contains(Country));
+            if (Birthday != null)
+                filteredFans = filteredFans.Where(m => m.Birthday > Birthday);
+
+            return View("Index", filteredFans);
+        }
+
         // GET: FansClub/Details/5
         public ActionResult Details(int? id)
         {

@@ -40,6 +40,16 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * ======================================================================== */
 
 
+
+$('input.form-control').click(function (e) {
+    e.stopPropagation();
+});
+
+$("input.form-control").click(function (e) {
+    $("#dlDropDown").dropdown("toggle");
+});
+
+
 +function ($) { "use strict";
 
   // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)

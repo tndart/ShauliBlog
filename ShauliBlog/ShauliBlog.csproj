@@ -178,6 +178,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Fan.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\FansByCountry.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -188,8 +189,11 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Extentions.txt" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
@@ -203,6 +207,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\d3.v3.js" />
     <Content Include="Scripts\jquery.validate.date.js" />
@@ -260,6 +269,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Posts\Stats.cshtml" />
     <Content Include="Views\Blog\PostsByTag.cshtml" />
+    <Content Include="Views\FansClub\FansByCountry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

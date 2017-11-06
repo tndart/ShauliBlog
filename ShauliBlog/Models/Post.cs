@@ -14,11 +14,12 @@ namespace ShauliBlog.Models {
             //this.PublishedDate = DateTime.Now;
         }
 
-        public Post(int ID, string title, string author, string authorSiteUrl, DateTime publishedDate,
-                    string content, string imageUrl, string videoUrl, ICollection<Comment> comments, ICollection<Tag> tags) {
+
+
+        public Post(int ID, string title, string authorSiteUrl, DateTime publishedDate,
+                    string content, string imageUrl, string videoUrl, ICollection<Comment> comments, ICollection<Tag> tags,int FanID) {
             this.ID = ID;
             this.Title = title;
-            this.Author = author;
             this.AuthorSiteUrl = authorSiteUrl;
             this.PublishedDate = publishedDate;
             this.Content = content;
@@ -26,10 +27,12 @@ namespace ShauliBlog.Models {
             this.VideoUrl = videoUrl;
             this.Comments = comments;
             this.Tags = tags;
+            this.FanID = FanID;
+
         }
 
         #region Props
-
+        [Key]
         public int ID { get; set; }
 
         public string Title { get; set; }
@@ -66,6 +69,10 @@ namespace ShauliBlog.Models {
         public string VideoUrl { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+    
+        public int FanID { get; set; }
+        [ForeignKey("FanID")]
+        public virtual Fan Fan { get; set; }
 
         public virtual ICollection<Tag> Tags { get; set; }
 

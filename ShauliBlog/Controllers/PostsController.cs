@@ -12,9 +12,41 @@ namespace ShauliBlog.Controllers {
     public class PostsController : Controller {
         private BlogContext db = new BlogContext();
 
+        public IEnumerable<Post> JoinPostWithFans()
+        {
+            var q = (from post in db.Posts
+                     join Fan in db.Fans on post.FanID equals Fan.ID
+                     where post.FanID == Fan.ID
+                     select post).AsEnumerable();
+
+          
+            return q;
+        }
+
         // GET: Posts
         public ActionResult Index() {
-            return View(db.Posts.ToList());
+            return View(JoinPostWithFans().ToList());
+        }
+
+
+
+        // Post: Search posts
+        public ActionResult SearchPost(string Title, string FanName, string Content, DateTime? PublishDate)
+        {
+            // Query the all posts
+            IQueryable<Post> filteredPosts = db.Posts.AsQueryable();
+
+            // Query by parameters
+            if (Title != "")
+                filteredPosts = filteredPosts.Where(m => m.Title.Contains(Title));
+            if (PublishDate != null)
+                filteredPosts = filteredPosts.Where(m => m.PublishedDate.Equals(PublishDate));
+            if (FanName != "")
+                filteredPosts = filteredPosts.Where(m => m.Fan.FirstName.Contains(FanName) || m.Fan.LastName.Contains(FanName));
+            if (Content != "")
+                filteredPosts = filteredPosts.Where(m => m.Content.Contains(Content));
+
+            return View("Index", filteredPosts);
         }
 
         // GET: Posts/Details/5

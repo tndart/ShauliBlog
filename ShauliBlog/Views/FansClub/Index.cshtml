@@ -10,6 +10,51 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="/FansClub/SearchFan" method="post" role="form">
+                    <div class="input-group" id="adv-search">
+                        <input name="Name" id="Name" type="text" class="form-control" placeholder="Search for Fan" />
+                        <div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                <div class="dropdown dropdown-lg">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                        <div class="form-group">
+                                            <label for="contain">Birthday</label>
+                                            <input name="Birthday" id="Birthday" class="form-control" type="date" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contain">Country</label>
+                                            <select class="form-control"  name="Country" id="Country">
+                                                <option value="All" id="Country1" selected>All Countries</option>
+                                                <option value="Israel" id="Country2">Israel</option>
+                                                <option value="USA" id="Country3">USA</option>
+                                                <option value="Italy" id="Country4">Italy</option>
+                                                <option value="Iraq" id="Country5">Iraq</option>
+                                            </select>
+                                         </div>
+                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br />
+<br />
+
 <table class="table">
     <tr>
         <th>
@@ -26,6 +71,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Pazam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
         </th>
         <th></th>
     </tr>
@@ -46,6 +94,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Pazam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
         </td>
         <td>
 @if (ShauliBlog.Code.AccountHelper.IsAdmin())

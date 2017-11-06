@@ -21,7 +21,7 @@ namespace ShauliBlog.Models {
 
         }
 
-        public Fan(int ID, string FirstName, string LastName, DateTime Birthday, Gender Gender, short Pazam, string username, string password, bool isAdmin) {
+        public Fan(int ID, string FirstName, string LastName, DateTime Birthday, Gender Gender, short Pazam, string username, string password, bool isAdmin, string country) {
             this.ID = ID;
             this.FirstName = FirstName;
             this.LastName = LastName;
@@ -31,6 +31,8 @@ namespace ShauliBlog.Models {
             this.Username = username;
             this.Password = password;
             this.IsAdmin = isAdmin;
+            this.Country = country;
+
         }
 
         public int ID { get; set; }
@@ -50,5 +52,7 @@ namespace ShauliBlog.Models {
         public string Password { get; set; }
 
         public bool IsAdmin{ get; set; }
+
+        public string Country { get; set; }
     }
 }

@@ -116,7 +116,7 @@ namespace ShauliBlog.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "ID,Title,Author,AuthorSiteUrl,PublishedDate,Content,ImageUrl,VideoUrl")] Post post) {
+        public ActionResult Create([Bind(Include = "ID,Title,FanID,AuthorSiteUrl,PublishedDate,Content,ImageUrl,VideoUrl")] Post post) {
             if (ModelState.IsValid) {
                 db.Posts.Add(post);
                 db.SaveChanges();
@@ -145,7 +145,7 @@ namespace ShauliBlog.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit([Bind(Include = "ID,Title,Author,AuthorSiteUrl,PublishedDate,Content,ImageUrl,VideoUrl")] Post post) {
+        public ActionResult Edit([Bind(Include = "ID,Title,FanID,AuthorSiteUrl,PublishedDate,Content,ImageUrl,VideoUrl")] Post post) {
             if (ModelState.IsValid) {
                 db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges();

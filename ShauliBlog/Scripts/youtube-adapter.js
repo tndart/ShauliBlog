@@ -42,7 +42,7 @@ function buildTable() {
     $.each(input.items, function (index, item) {
         output += "<tr>" +
             "<td>" +
-                 item.title +
+                 "<a href=\"javascript:void(0);\" onclick=\"changeURL('" + item.videoId + "')\">" + item.title + "</a>" +
             "</td>" +
              "<td>" +
                  "<img width=\"100px\" height=\"100px\" src=\"" + item.thumb + "\" />"
@@ -69,3 +69,7 @@ function getOutput(item) {
 $("#search-form").submit(function (e) {
     e.preventDefault();
 });
+
+function changeURL(youtubeId) {
+    $('#VideoUrl').val(youtubeId);
+}

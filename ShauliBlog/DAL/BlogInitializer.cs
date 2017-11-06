@@ -17,10 +17,10 @@ namespace ShauliBlog.DAL {
            };
 
             var fans = new List<Fan> {
-                new Fan(1, "Liron", "Elbaz", new DateTime(1992,5,9), Gender.Male, 9, "liron", "123456", false),
-                new Fan(2, "Yakir", "Nadav", new DateTime(1992,8,23), Gender.Male, 5, "yakir", "123456", false),
-                new Fan(3, "Shem-tova", "Yerhi", new DateTime(1992,8,2), Gender.Female, 7, "admin", "admin", true),
-                new Fan(4, "Vered", "Gotliv", new DateTime(1980,6,8), Gender.Female, 19, "vered", "123456", true)
+                new Fan(1, "Liron", "Elbaz", new DateTime(1992,5,9), Gender.Male, 9, "liron", "123456", false, "Israel"),
+                new Fan(2, "Yakir", "Nadav", new DateTime(1992,8,23), Gender.Male, 5, "yakir", "123456", false, "Israel"),
+                new Fan(3, "Shem-tova", "Yerhi", new DateTime(1992,8,2), Gender.Female, 7, "admin", "admin", true, "France"),
+                new Fan(4, "Vered", "Gotliv", new DateTime(1980,6,8), Gender.Female, 19, "vered", "123456", true, "USA")
             };
 
             var comments = new List<Comment> {
@@ -37,13 +37,13 @@ namespace ShauliBlog.DAL {
             };
 
             var posts = new List<Post> {
-                new Post(1, "Post 1", "Shemtova", "https://Shemtova.com", DateTime.Today, "First post ever", "images/flower.png", "", comments.FindAll(x => x.ID < 3), new List<Tag> { tags[0], tags[1] }),
-                new Post(2, "Post 2", "Yakir", "https://Yakir.com", DateTime.Today.AddDays(-2), "Second post ever", "", "", comments.FindAll(x => x.ID == 3), new List<Tag> { tags[0], tags[2] }),
-                new Post(3, "Post 3", "Vered", "https://Vered.com", DateTime.Today.AddDays(-3), "third post ever", "", "", comments.FindAll(x => x.ID == 4), new List<Tag> { tags[0] }),
-                new Post(4, "Post 4", "Liron", "https://Yakir.com", DateTime.Today.AddDays(-3), "forth post ever", "", "", comments.FindAll(x => x.ID == 5), new List<Tag> { tags[1] }),
-                new Post(5, "Post 5", "Yakir", "https://Yakir.com", DateTime.Today.AddDays(-8), "fifth post ever", "", "", comments.FindAll(x => x.ID == 6), new List<Tag> { tags[0], tags[2] }),
-                new Post(6, "Post 6", "Vered", "https://Vered.com", DateTime.Today.AddDays(-9), "6 post ever", "", "", comments.FindAll(x => x.ID == 7 || x.ID == 8), tags),
-                new Post(7, "Post 7", "Shemtova", "https://Shemtova.com", DateTime.Today.AddDays(-29), "7 post ever", "", "", comments.FindAll(x => x.ID == 9), new List<Tag> { tags[2] })
+                new Post(1, "Post 1", 1, "https://Shemtova.com", DateTime.Today, "First post ever", "images/flower.png", "", comments.FindAll(x => x.ID < 3), new List<Tag> { tags[0], tags[1] }),
+                new Post(2, "Post 2", 2, "https://Yakir.com", DateTime.Today.AddDays(-2), "Second post ever", "", "", comments.FindAll(x => x.ID == 3), new List<Tag> { tags[0], tags[2] }),
+                new Post(3, "Post 3", 3, "https://Vered.com", DateTime.Today.AddDays(-3), "third post ever", "", "", comments.FindAll(x => x.ID == 4), new List<Tag> { tags[0] }),
+                new Post(4, "Post 4", 2, "https://Yakir.com", DateTime.Today.AddDays(-3), "forth post ever", "", "", comments.FindAll(x => x.ID == 5), new List<Tag> { tags[1] }),
+                new Post(5, "Post 5", 3, "https://Yakir.com", DateTime.Today.AddDays(-8), "fifth post ever", "", "", comments.FindAll(x => x.ID == 6), new List<Tag> { tags[0], tags[2] }),
+                new Post(6, "Post 6", 4, "https://Vered.com", DateTime.Today.AddDays(-9), "6 post ever", "", "", comments.FindAll(x => x.ID == 7 || x.ID == 8), tags),
+                new Post(7, "Post 7", 1, "https://Shemtova.com", DateTime.Today.AddDays(-29), "7 post ever", "", "", comments.FindAll(x => x.ID == 9), new List<Tag> { tags[2] })
             };
 
 

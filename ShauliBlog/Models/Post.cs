@@ -16,8 +16,8 @@ namespace ShauliBlog.Models {
 
 
 
-        public Post(int ID, string title, string authorSiteUrl, DateTime publishedDate,
-                    string content, string imageUrl, string videoUrl, ICollection<Comment> comments, ICollection<Tag> tags,int FanID) {
+        public Post(int ID, string title, int FanID, string authorSiteUrl, DateTime publishedDate,
+                    string content, string imageUrl, string videoUrl, ICollection<Comment> comments, ICollection<Tag> tags) {
             this.ID = ID;
             this.Title = title;
             this.AuthorSiteUrl = authorSiteUrl;
@@ -38,6 +38,9 @@ namespace ShauliBlog.Models {
         public string Title { get; set; }
 
         public string Author { get; set; }
+        public int FanID { get; set; }
+        [ForeignKey("FanID")]
+        public virtual Fan Fan { get; set; }
 
         public string AuthorSiteUrl { get; set; }
 
@@ -70,9 +73,6 @@ namespace ShauliBlog.Models {
 
         public virtual ICollection<Comment> Comments { get; set; }
     
-        public int FanID { get; set; }
-        [ForeignKey("FanID")]
-        public virtual Fan Fan { get; set; }
 
         public virtual ICollection<Tag> Tags { get; set; }
 

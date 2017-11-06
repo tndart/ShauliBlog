@@ -79,7 +79,7 @@ namespace ShauliBlog.Controllers {
 
             }
             else {
-                var res = results.GroupBy(post2 => post2.Author, (key, g) => {
+                var res = results.GroupBy(post2 => post2.Fan.Username, (key, g) => {
                     var arr = new String[2];
                     arr[0] = g.Count().ToString();
                     arr[1] = key;

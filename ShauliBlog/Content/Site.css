@@ -31,10 +31,11 @@ header, footer, section, aside, nav, article {
 	display: block;
 }
 
-@font-face{
+/*@font-face{
 	font-family: GeneralFont;
 	src: url(sansation_light.woff);
-}
+}*/
+
 p{
 	font-family: GeneralFont;
 }

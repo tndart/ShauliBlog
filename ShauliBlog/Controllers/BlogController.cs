@@ -2,6 +2,7 @@
 using ShauliBlog.DAL;
 using ShauliBlog.Models;
 using System;
+using System.Globalization;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,5 +77,28 @@ namespace ShauliBlog.Controllers {
 
             return View(posts1);
         }
+
+
+        // POST: Blog/AddComment
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        public ActionResult AddComment(String Title, String Author, String AuthorSiteUrl, String Content, int PostID)
+        {
+            if (ModelState.IsValid)
+            {
+                int lastID = db.Comments.Count();
+
+                Comment comment = new Comment(lastID + 10, Title, Author, AuthorSiteUrl, DateTime.Now, Content, PostID);
+
+                db.Comments.Add(comment);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            Post post = db.Posts.Find(PostID);
+            return View(post);
+        }
+
     }
 }

@@ -24,8 +24,8 @@
                                                     <input name="PublishDate" id="PublishDate" class="form-control" type="date" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="contain">Author</label>
-                                                    <input value="" name="Author" id="Author" class="form-control" type="text" />
+                                                    <label for="contain">Fan Name</label>
+                                                    <input value="" name="FanName" id="FanName" class="form-control" type="text" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="contain">Contains the words</label>
@@ -102,23 +102,23 @@
                 </article>
             }
         </section>
-        <form action="#" method="post">
+        <form action="/Blog/AddComment" method="post">
             <h3>Post a comment</h3>
             <p>
-                <label for="name">Name</label>
-                <input name="name" id="name" type="text" required />
+                <label for="Author">Name</label>
+                <input name="Author" id="Author" type="text" required />
             </p>
             <p>
-                <label for="email">E-mail</label>
-                <input name="email" id="email" type="email" required />
+                <label for="AuthorSiteUrl">E-Maill</label>
+                <input name="AuthorSiteUrl" id="AuthorSiteUrl" type="email" required />
             </p>
             <p>
-                <label for="website">Website</label>
-                <input name="website" id="website" type="url" />
+                <label for="Content">Comment</label>
+                <textarea name="Content" id="Content" required></textarea>
             </p>
             <p>
-                <label for="comment">Comment</label>
-                <textarea name="comment" id="comment" required></textarea>
+                
+                <input name="PostID" id="PostID" value="@Model.ID" type="hidden" />
             </p>
             <p><input type="submit" value="Post comment" /></p>
         </form>

@@ -37,7 +37,7 @@ namespace ShauliBlog.DAL {
             };
 
             var posts = new List<Post> {
-                new Post(1, "Post 1", 1, "https://Shemtova.com", DateTime.Today, "First post ever", "images/flower.png", "", comments.FindAll(x => x.ID < 3), new List<Tag> { tags[0], tags[1] }),
+                new Post(1, "Post 1", 1, "https://Shemtova.com", DateTime.Today, "First post ever", "images/flower.png", "KhzGSHNhnbI", comments.FindAll(x => x.ID < 3), new List<Tag> { tags[0], tags[1] }),
                 new Post(2, "Post 2", 2, "https://Yakir.com", DateTime.Today.AddDays(-2), "Second post ever", "", "", comments.FindAll(x => x.ID == 3), new List<Tag> { tags[0], tags[2] }),
                 new Post(3, "Post 3", 3, "https://Vered.com", DateTime.Today.AddDays(-3), "third post ever", "", "", comments.FindAll(x => x.ID == 4), new List<Tag> { tags[0] }),
                 new Post(4, "Post 4", 2, "https://Yakir.com", DateTime.Today.AddDays(-3), "forth post ever", "", "", comments.FindAll(x => x.ID == 5), new List<Tag> { tags[1] }),

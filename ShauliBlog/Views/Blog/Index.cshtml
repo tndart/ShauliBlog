@@ -7,10 +7,6 @@
 
 @section ContentSection
 {
-    <div id="mainContent">
-        <br />
-        <br />
-
         <section>
             <div class="container">
                 <div class="row">
@@ -57,7 +53,7 @@
                         Tags:
                         @foreach (var tag in Model.Tags)
                         {
-                            <a href="#"> @tag.Name </a>
+                            <a href="/Blog/PostsByTag?tags=@tag.Name-"> @tag.Name </a>
                         }
                         <a href="/Blog/PostsByTag?tags=@Model.tagsToString">
                             <button> Give me more like that </button>
@@ -71,12 +67,18 @@
 
                     <img src="@Model.ImageUrl" />
 
-                    @if (!string.IsNullOrEmpty(Model.VideoUrl))
-                    {
-                        <video controls="controls">
-                            <source src="@Html.DisplayFor(model => model.VideoUrl)" type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
+                    @if (!string.IsNullOrEmpty(Model.VideoUrl)) {
+                        if (Model.VideoUrl.StartsWith("http") || Model.VideoUrl.Contains("/")) {
+                            <video controls="controls">
+                                <source src="@Html.DisplayFor(model => model.VideoUrl)" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        }
+                        else {
+                            var videoFullURL = "https://www.youtube.com/embed/" + Model.VideoUrl;
+                            <iframe width="720" height="405" src="@videoFullURL" frameborder="0" allowfullscreen></iframe>
+                        }
+
                     }
 
 
@@ -120,5 +122,4 @@
             </p>
             <p><input type="submit" value="Post comment" /></p>
         </form>
-    </div>
 }

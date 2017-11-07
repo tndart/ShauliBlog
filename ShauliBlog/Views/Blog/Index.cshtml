@@ -53,7 +53,7 @@
                         Tags:
                         @foreach (var tag in Model.Tags)
                         {
-                            <a href="/Blog/PostsByTag?tags=@tag.Name-"> @tag.Name </a>
+                            <a href="/Blog/PostsByTag?tags=@tag.ID-"> @tag.Name </a>
                         }
                         <a href="/Blog/PostsByTag?tags=@Model.tagsToString">
                             <button> Give me more like that </button>

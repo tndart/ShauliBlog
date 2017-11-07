@@ -10,9 +10,12 @@
 
 </head>
 <body>
-    <header>
-        <h1 class="TitleShauli">Ha-Blog Shel Shauli</h1>
+    <header style="display: flow-root">
+        <h1 style="display: inline-block" class="TitleShauli">Ha-Blog Shel Shauli</h1>
+
+        <img style="display:inline-block; float:right;" src="~/images/new-shauli.png" />
     </header>
+
     <nav>
         <!-- Navigation -->
         <ul>
@@ -46,17 +49,7 @@
         </ul>
     </nav>
 
-    <section id="intro">
-        <!-- Introduction -->
-
-        <header>
-            <h2>Do you have questions for me?</h2>
-        </header>
-        <p>bla bla bla bla</p>
-        <img src="~/images/intro_shauli.png" alt="Shauli" />
-
-    </section>
-
+    <br /><br /><br />
     <div id="content">
         <div id="mainContent">
             @RenderSection("ContentSection", true)
@@ -67,27 +60,17 @@
                 <h3>Categories</h3>
             </header>
             <ul>
-                <li><a href="#">Lorem ipsum dolor</a></li>
-                <li><a href="#">Sit amet consectetur</a></li>
-                <li><a href="#">Adipisicing elit sed</a></li>
+                <li><a href="/Blog/PostsByTag?tags=1-"> Sport </a></li>
+                <li><a href="/Blog/PostsByTag?tags=2-"> Romantic </a></li>
+                <li><a href="/Blog/PostsByTag?tags=3-"> Entertainment </a></li>
             </ul>
         </section>
+
         <section>
-            <header>
-                <h3>Archives</h3>
-            </header>
-            <ul>
-                <li><a href="#">December 2008</a></li>
-                <li><a href="#">January 2009</a></li>
-                <li><a href="#">February 2009</a></li>
-                <li><a href="#">March 2009</a></li>
-            </ul>
-        </section>
-        <section>
-            <audio id="audio" controls="controls">
+            <audio id="audio" controls="controls" autoplay="autoplay">
                 <source src="http://www.orangefreesounds.com/wp-content/uploads/2017/06/Electron-breeze-downtempo-lounge-chill-out.mp3" type="audio/mpeg">
             </audio>
-        </section>
+        </section>      
     </aside>
 </div>
 

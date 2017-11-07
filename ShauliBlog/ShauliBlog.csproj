@@ -201,6 +201,7 @@
     <Content Include="images\flower.png" />
     <Content Include="images\intro_flower.png" />
     <Content Include="images\intro_shauli.png" />
+    <Content Include="images\new-shauli.png" />
     <Content Include="images\rss.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

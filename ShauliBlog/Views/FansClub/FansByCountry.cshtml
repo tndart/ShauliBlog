@@ -1,0 +1,96 @@
+﻿@model List<ShauliBlog.Models.FansByCountry>
+
+@{
+    ViewBag.Title = "Fans By Country";
+
+
+}
+
+
+@section ContentSection {
+    <h2>Fans By Country</h2>
+    <section>
+        <div>
+            @foreach (var item in Model)
+    {
+                <a href="/FansClub/SearchFanByCountry?Country=@item.country" class="btn btn-sq-lg btn-success">
+                    <i class="fa fa-globe fa-5x"></i>
+                    <br />
+                    <b class="country-name">@item.country</b>
+                    <br />
+                    <b class="country-count">@item.count</b>
+                </a>
+            }
+        </div>
+        <div style="padding-top:5px">
+            @foreach (var item in Model)
+    {
+                <a href="#" id="@item.country" class="btn btn-sq-lg btn-success" style="width:90px">
+                    <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                </a>
+            }
+        </div>
+        <br />
+        <br />
+    </section>
+    <section>
+        <style type="text/css">
+            #map_canvas {
+                height: 600px;
+                width: 800px;
+            }
+        </style>
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnwQBg2zSFYy_J37E7S7Lhu0Cz8ptL6qQ&callback=initMap"
+                type="text/javascript"></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+        <script type="text/javascript">
+        var marker;
+        var map;
+
+        $("#France").click(function () {
+            changeMarkerPos(46.1368753, -2.4356059);
+        });
+        $("#Israel").click(function () {
+            changeMarkerPos(31.3867134, 32.8381988);
+        });
+        $("#USA").click(function () {
+            changeMarkerPos(36.2130699, -113.7064596);
+        });
+
+        function initMap()
+        {
+            var latlng = new google.maps.LatLng(41, 29);
+            var myOptions = {
+                zoom: 10,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(3.167244, 101.612950),
+                animation: google.maps.Animation.DROP,
+                icon: 'https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/location-24-32.png',
+            });
+        }
+
+        function changeMarkerPos(lat, lon) {
+            marker.setMap(map);
+            map.panTo(marker.position);
+
+            myLatLng = new google.maps.LatLng(lat, lon)
+            marker.setPosition(myLatLng);
+            map.panTo(myLatLng);
+        }
+        </script>
+
+
+        <div id="map_canvas"></div>
+
+    </section>
+
+}
